@@ -34,7 +34,7 @@ namespace TryAspNetCoreMirgate
 
             // Add framework services.
             services.AddMvc(options => options.Filters.Add(typeof(MigrateExceptionFilter)));
-            services.RegisterDbContextHandleMigrations(options => options.UseSqlServer(connection));
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

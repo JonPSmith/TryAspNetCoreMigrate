@@ -16,14 +16,14 @@ namespace TryAspNetCoreMirgate.Controllers
 
         public IActionResult Index()
         {
-            MyDbContextHandleMigrations.MigrateDatabase(_options, MySeedDatabase);
-            return View();
+            var errorMessage = _options.MigrateDatabase(MySeedDatabase);
+            return View((object)errorMessage);
         }
 
-        private void MySeedDatabase(MyDbContext context)
+        private string MySeedDatabase(MyDbContext context)
         {
             context.MyEntities.Add(new MyEntity());
-            context.SaveChanges();
+            return null;
         }
     }
 }

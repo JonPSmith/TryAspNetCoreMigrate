@@ -8,8 +8,8 @@ using TryAspNetCoreMirgate.EfCore;
 namespace TryAspNetCoreMirgate.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20170329143759_part4")]
-    partial class part4
+    [Migration("20170401080652_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,12 +21,6 @@ namespace TryAspNetCoreMirgate.Migrations
                 {
                     b.Property<int>("MyEntityId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Part2");
-
-                    b.Property<int>("Part3");
-
-                    b.Property<int>("Part4");
 
                     b.HasKey("MyEntityId");
 

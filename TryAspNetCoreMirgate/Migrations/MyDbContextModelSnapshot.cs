@@ -21,14 +21,6 @@ namespace TryAspNetCoreMirgate.Migrations
                     b.Property<int>("MyEntityId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Part2");
-
-                    b.Property<int>("Part3");
-
-                    b.Property<int>("Part4");
-
-                    b.Property<int>("Part5");
-
                     b.HasKey("MyEntityId");
 
                     b.ToTable("MyEntities");
