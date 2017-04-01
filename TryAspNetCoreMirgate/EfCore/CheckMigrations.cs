@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using TryAspNetCoreMirgate.Migrate;
 
 namespace TryAspNetCoreMirgate.EfCore
 {
-    public static class HandleMigrations
+    public static class CheckMigrations
     {
         private static bool _cachedOutstandingMigrations = true;
 
@@ -15,27 +13,6 @@ namespace TryAspNetCoreMirgate.EfCore
         {
             if (!adminAccess && HasOutstandingMigrations(context))
                 throw new OutstandingMigrationException();
-        }
-
-        public static string MigrateDatabase(this DbContextOptions<MyDbContext> options, Func<MyDbContext, string> seedDatabase = null)
-        {
-            string errorMessage = null;
-            using (var context = new MyDbContext(options, true))
-            {
-                if (!context.Database.GetPendingMigrations().Any())
-                    throw new InvalidOperationException("There were no migrations to apply.");
-
-                context.Database.Migrate();
-                if (seedDatabase != null)
-                {
-                    errorMessage = seedDatabase.Invoke(context);
-                    if (errorMessage == null)
-                        context.SaveChanges();
-                }
-            }
-            _cachedOutstandingMigrations = false;
-
-            return errorMessage;
         }
 
         /// <summary>
