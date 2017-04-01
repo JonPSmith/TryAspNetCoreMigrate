@@ -8,9 +8,10 @@ using TryAspNetCoreMirgate.EfCore;
 namespace TryAspNetCoreMirgate.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170401123934_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -22,8 +23,6 @@ namespace TryAspNetCoreMirgate.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Part1");
-
-                    b.Property<int>("Part2");
 
                     b.HasKey("MyEntityId");
 

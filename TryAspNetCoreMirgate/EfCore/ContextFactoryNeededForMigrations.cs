@@ -23,7 +23,7 @@ namespace TryAspNetCoreMirgate.EfCore
             var optionsBuilder = new DbContextOptionsBuilder<MyDbContext>();
             optionsBuilder.UseSqlServer(ConnectionString);
 
-            return new MyDbContext(optionsBuilder.Options);
+            return new MyDbContext(optionsBuilder.Options, true);
         }
     }
 }

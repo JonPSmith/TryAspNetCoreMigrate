@@ -14,7 +14,8 @@ namespace TryAspNetCoreMirgate.Migrations
                 columns: table => new
                 {
                     MyEntityId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Part1 = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
