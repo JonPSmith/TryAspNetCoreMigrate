@@ -7,10 +7,10 @@ namespace TryAspNetCoreMirgate.EfCore
         public DbSet<MyEntity> MyEntities { get; set; }
 
         public MyDbContext(
-            DbContextOptions<MyDbContext> options, bool adminAccess = false)
+            DbContextOptions<MyDbContext> options, bool ignoreMigations = false)
             : base(options)
         {
-            this.ThrowExceptionIfPendingMigrations(adminAccess);
+            this.ThrowExceptionIfPendingMigrations(ignoreMigations);
         }     
     }
 }

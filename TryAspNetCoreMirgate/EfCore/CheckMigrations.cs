@@ -9,9 +9,9 @@ namespace TryAspNetCoreMirgate.EfCore
     {
         private static bool _cachedOutstandingMigrations = true;
 
-        public static void ThrowExceptionIfPendingMigrations(this DbContext context, bool adminAccess)
+        public static void ThrowExceptionIfPendingMigrations(this DbContext context, bool ignoreMigations)
         {
-            if (!adminAccess && HasOutstandingMigrations(context))
+            if (!ignoreMigations && HasOutstandingMigrations(context))
                 throw new OutstandingMigrationException();
         }
 
